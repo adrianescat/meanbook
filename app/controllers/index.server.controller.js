@@ -1,4 +1,12 @@
-//using the CommonJS module pattern to define a function named render()
 exports.render = function(req, res) {
-  res.send('Hello World');
+  //Testeamos session. Se ve en la consola levantada.
+  if (req.session.lastVisit) {
+    console.log(req.session.lastVisit);
+  }
+  req.session.lastVisit = new Date();
+
+  // renderizamos con el EJS engine. Le pasamos la view y las variables.
+  res.render('index', {
+    title: 'Hello World'
+  });
 };
