@@ -1,4 +1,4 @@
-var config = require('./config'), //archivo de config según el entorno
+var config = require('./config'),
   express = require('express'),
   morgan = require('morgan'),
   compress = require('compression'),
@@ -9,11 +9,10 @@ var config = require('./config'), //archivo de config según el entorno
 module.exports = function() {
   var app = express();
 
-  //Usamos módulos según el entorno.
   if (process.env.NODE_ENV === 'development') {
-    app.use(morgan('dev')); //logger
+    app.use(morgan('dev'));
   } else if (process.env.NODE_ENV === 'production') {
-    app.use(compress()); //compresión.
+    app.use(compress());
   }
 
   app.use(bodyParser.urlencoded({
@@ -25,16 +24,16 @@ module.exports = function() {
   app.use(session({
     saveUninitialized: true,
     resave: true,
-    secret: config.sessionSecret //secret obtenido del archivo de config
+    secret: config.sessionSecret
   }));
 
-  app.set('views', './app/views'); //seateamos la carpeta de views
-  app.set('view engine', 'ejs'); //seteamos el template engine
+  app.set('views', './app/views');
+  app.set('view engine', 'ejs');
 
   require('../app/routes/index.server.routes.js')(app);
+  require('../app/routes/users.server.routes.js')(app);
   
-  //Middleware de express para servir archivos estáticos
-  app.use(express.static('./public')); //carpeta public de donde los obtiene 
+  app.use(express.static('./public'));
 
   return app;
 };
