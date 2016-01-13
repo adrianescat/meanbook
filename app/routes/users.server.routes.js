@@ -16,15 +16,23 @@ module.exports = function(app) {
 
   app.get('/signout', users.signout);
 
-  //Para empezar con el proceso de autentificacion
   app.get('/oauth/facebook', passport.authenticate('facebook', {
     failureRedirect: '/signin',
     scope: 'email'
   }));
-  //Para finalizar con el proceso una vez que el usuario linkeo su cuenta
+  
   app.get('/oauth/facebook/callback', passport.authenticate('facebook', {
     failureRedirect: '/signin',
     successRedirect: '/',
     scope: 'email'
+  }));
+
+  app.get('/oauth/twitter', passport.authenticate('twitter', {
+  failureRedirect: '/signin'
+  }));
+
+  app.get('/oauth/twitter/callback', passport.authenticate('twitter', {
+    failureRedirect: '/signin',
+    successRedirect: '/'
   }));
 };
