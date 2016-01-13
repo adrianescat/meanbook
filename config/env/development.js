@@ -11,5 +11,10 @@ module.exports = {
     clientID: 'LWGb66qvtLpZHoMxiFVHT37Vs',
     clientSecret: 'QimzLs2D7M4RYbKTT2ZP0QSSuIE0PaiiK2GRgvskM1VRNnYUY5',
     callbackURL: 'http://localhost:3000/oauth/twitter/callback'
+  },
+  google: {
+    clientID: '202439426229-pkbp0dg9168ad6hcrdiencj3kodllusm.apps.googleusercontent.com',
+    clientSecret: 'GJPIgwhxtHn48tijZeUVmujY',
+    callbackURL: 'http://localhost:3000/oauth/google/callback'
   }
 };
