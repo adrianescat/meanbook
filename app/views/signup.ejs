@@ -34,5 +34,23 @@
       <input type="submit" value="Sign up" />
     </div>
   </form>
+  <a href="/oauth/facebook">Sign in with Facebook</a>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '933306670051838',
+        xfbml      : true,
+        version    : 'v2.5'
+      });
+    };
+
+    (function(d, s, id){
+       var js, fjs = d.getElementsByTagName(s)[0];
+       if (d.getElementById(id)) {return;}
+       js = d.createElement(s); js.id = id;
+       js.src = "//connect.facebook.net/en_US/sdk.js";
+       fjs.parentNode.insertBefore(js, fjs);
+     }(document, 'script', 'facebook-jssdk'));
+  </script>
 </body>
 </html>
