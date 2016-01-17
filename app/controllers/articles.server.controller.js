@@ -82,16 +82,6 @@ exports.delete = function(req, res) {
   });
 };
 
-exports.requiresLogin = function(req, res, next) {
-  if (!req.isAuthenticated()) {
-    return res.status(401).send({
-      message: 'User is not logged in'
-    });
-  }
-
-  next();
-};
-
 exports.hasAuthorization = function(req, res, next) {
     if (req.article.creator.id !== req.user.id) {
         return res.status(403).send({
